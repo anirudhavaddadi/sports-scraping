@@ -102,3 +102,15 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# Added by AV
+*.json
+.idea/workspace.xml
+*.egg-info/
+env/
+.python-version
+*.pyc
+__pycache__/
+auth/
+.idea/
+*.xml

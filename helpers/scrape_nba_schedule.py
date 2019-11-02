@@ -18,12 +18,23 @@ soup = BeautifulSoup(html)
 soup.findAll('tr', limit=2)
 # use getText()to extract the text we need into a list
 headers = [th.getText() for th in soup.findAll('tr', limit=2)[0].findAll('th')]
+
+# The first column (date) is a different class than the rest of the columns.
+# So break up headers into two separate lists below.
+date_col = headers[0:0]
+headers = headers[1:]
+print(date_col)
 print(headers)
 
-# avoid the first header row
+# Get data and avoid the first header row
 rows = soup.findAll('tr')[1:]
 games = [[td.getText() for td in rows[i].findAll('td')]
             for i in range(len(rows))]
+dates = [[td.getText() for td in rows[i].findAll('left')]
+            for i in range(len(rows))]
+
 print(games)
 games = pd.DataFrame(games, columns = headers)
+dates = pd.DataFrame(games, columns = date_col)
 games.head(10)
+dates.head(10)

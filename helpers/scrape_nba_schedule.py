@@ -3,6 +3,8 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import datetime as dt
 from datetime import datetime, timedelta
+pd.set_option('display.max_columns', 12)
+pd.set_option('display.width', 1000)
 
 def run():
     # Take month and year as inputs
@@ -80,9 +82,11 @@ def run():
     next_week_schedule['date_ist'] = [d.date() for d in next_week_schedule['date_time_ist']]
     next_week_schedule['time_ist'] = [d.time() for d in next_week_schedule['date_time_ist']]
 
-    print(next_week_schedule)
-
     return next_week_schedule
+
+output = run()
+
+print(output)
 
 '''
 Need to still do the following:
